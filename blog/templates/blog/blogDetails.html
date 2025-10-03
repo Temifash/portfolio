@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <h1>My blog details</h1>
+    <section>
+        <a href="{% url 'blogHome' %}">Back</a>
+
+        <img src=" {{blog.image.url}}" alt="blog img" width="100%" height="400px" style="object-fit: cover;">
+        <h1>{{blog.title}}</h1>
+        <p>{{blog.description}}</p>
+        <p>{{blog.content}}</p>
+        <p>Written by: {{blog.author}}</p>
+        <p>Published date: {{blog.date}}</p>
+
+     
+        {% if user.is_authenticated and user.is_superuser %} 
+        <form action=" {% url 'deleteBlog' blog.id %}" method="post">
+            {% csrf_token %}
+            <button>Delete</button>
+        </form>
+        {% endif %}
+    </section>
+{% endblock main %}

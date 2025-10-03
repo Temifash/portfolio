@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<h1>User Log-in</h1>
+
+<section>
+    <form action="" method="post">
+        {{form}}
+        {% csrf_token %}
+        <button>Login</button>
+    </form>
+    <p>Don't have an account already? click <a href="{% url 'userRegister' %}">here</a>to sign up for one</p>
+</section>
+
+{% endblock main %}

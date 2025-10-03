@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <h1>My blog</h1>
+
+    {% for blog in blogs %}
+        <div>
+            <img src=" {{blog.image.url}}" alt="blog img" width="400px" height="400px" style="object-fit: cover;">
+            <h3>{{blog.title}}</h3>
+            <a href=" {% url 'blogDetails' pk=blog.id %}">Read More</a>
+            <p>Written by: {{blog.author}}</p>
+            <p>Published date: {{blog.date}}</p>
+        </div>
+    
+    {% endfor %}
+{% endblock main %}
